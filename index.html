@@ -100,10 +100,10 @@
 .slide.active .slide-img { animation: kenburns 8s ease-out forwards; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.12) translate(-1.5%, -1%); } }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(43,42,25,0.7), rgba(51,49,30,0.45), rgba(43,42,25,0.78)); }
-.hero-overlay2 { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(43,42,25,0.12), rgba(43,42,25,0.7)); }
+.hero-overlay2 { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 54% at 50% 45%, rgba(26,25,14,0.66) 0%, rgba(26,25,14,0.34) 52%, rgba(26,25,14,0) 100%); }
 .hero-content { position: relative; z-index: 3; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--cream); padding: 0 24px; }
-.hero-content .emblem { height: 108px; width: auto; color: var(--gold); }
-.hero-content .wordmark { color: var(--gold); margin-top: 14px; }
+.hero-content .emblem { height: 112px; width: auto; color: var(--gold-soft); filter: drop-shadow(0 2px 14px rgba(0,0,0,0.6)); }
+.hero-content .wordmark { color: var(--gold-soft); margin-top: 14px; text-shadow: 0 2px 22px rgba(14,13,7,0.7), 0 1px 3px rgba(14,13,7,0.5); }
 .hero-content .w1 { font-size: clamp(56px, 11vw, 132px); }
 .hero-content .w2 { font-size: clamp(15px, 2vw, 20px); }
 .hero-content .tag { font-size: clamp(10px, 1.4vw, 13px); }
@@ -145,6 +145,9 @@
 .about-copy .label::before { content: ""; height: 1px; width: 32px; background: var(--gold-dark); opacity: 0.7; }
 .about-copy h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(32px, 4vw, 48px); line-height: 1.15; color: var(--ink); margin-top: 20px; text-wrap: balance; }
 .about-copy p.body { max-width: 520px; margin-top: 24px; font-size: 15px; line-height: 1.75; color: var(--muted); }
+.founder { display: flex; flex-direction: column; gap: 3px; margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(184,155,110,0.3); }
+.founder .fn { font-family: var(--serif); font-size: 27px; font-weight: 500; color: var(--ink); line-height: 1; }
+.founder .fr { font-size: 11px; letter-spacing: 0.22em; color: var(--gold-dark); }
 .link-arrow { display: inline-flex; align-items: center; gap: 8px; margin-top: 30px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.24em; color: var(--gold-dark); }
 .link-arrow .u { position: relative; }
 .link-arrow .u::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 1px; width: 0; background: var(--gold); transition: width .4s cubic-bezier(.22,1,.36,1); }
@@ -239,6 +242,7 @@
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .nav { display: none; }
+  .btn-ghost { display: none; }
   .burger { display: flex; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .stats { border-left: none; padding-left: 0; }
@@ -338,7 +342,11 @@
       <div class="about-copy">
         <p class="label reveal">ABOUT AUREVIA ATELIER</p>
         <h2 class="reveal">Where Vision<br>Meets Timeless Design</h2>
-        <p class="body reveal">Aurevia Atelier is a multidisciplinary interior design studio based in Mumbai, creating bespoke spaces that reflect your personality, purpose and lifestyle. We believe that every space has the power to inspire, uplift and leave a lasting legacy.</p>
+        <p class="body reveal">Aurevia Atelier is a multidisciplinary interior design studio based in Mumbai, creating bespoke spaces that reflect your personality, purpose and lifestyle. We believe that every space has the power to inspire, uplift and leave a lasting legacy. Led by founder and principal designer Jaina, the studio pairs a considered eye with hands-on craft on every project.</p>
+        <div class="founder reveal">
+          <span class="fn serif">Jaina</span>
+          <span class="fr">FOUNDER &amp; PRINCIPAL DESIGNER</span>
+        </div>
         <a href="#about" class="link-arrow reveal"><span class="u">READ OUR STORY</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </a>
@@ -638,5 +646,14 @@ ready to live in</p>
     input.value = "";
     setTimeout(function () { newsMsg.textContent = ""; }, 3500);
   });
+
+  // Safety net: never leave anything stuck invisible — reveal anything already in view
+  function revealInView() {
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add("in");
+    });
+  }
+  window.addEventListener("load", function () { setTimeout(revealInView, 200); });
+  window.addEventListener("scroll", revealInView, { passive: true });
 })();
 </script>
