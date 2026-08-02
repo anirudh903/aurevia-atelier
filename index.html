@@ -273,6 +273,22 @@
   .scroll-hint span { animation: none; }
   .slide { transition: opacity .3s; }
 }
+
+/* ---------- Mobile overflow hardening ---------- */
+html, body { overflow-x: hidden; max-width: 100%; }
+.aurevia, .aurevia * { min-width: 0; }
+.aurevia img, .aurevia svg, .aurevia video { max-width: 100%; height: auto; }
+.aurevia p, .aurevia h1, .aurevia h2, .aurevia h3, .aurevia h4, .aurevia span, .aurevia a, .aurevia li { overflow-wrap: break-word; word-break: normal; }
+@media (max-width: 640px) {
+  .eyebrow p { letter-spacing: 0.18em; }
+  .about-copy .label { letter-spacing: 0.16em; }
+  .foot h4 { letter-spacing: 0.16em; }
+  .foot-bar p { letter-spacing: 0.1em; }
+  .step .st { letter-spacing: 0.12em; }
+  .svc h3 { letter-spacing: 0.08em; }
+  .cta { padding: 14px 26px; letter-spacing: 0.14em; }
+  .btn-ghost { max-width: 46vw; }
+}
 </style>
 
 <!-- SVG symbol defs -->
