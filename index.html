@@ -67,7 +67,7 @@
   display: flex; align-items: center; justify-content: space-between;
   padding: 18px 40px;
   background: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent);
-  transition: background .5s ease, box-shadow .5s ease, padding .4s ease;
+  transition: background .5s ease, box-shadow .5s ease, padding .4s ease; transform: translateZ(0); -webkit-backface-visibility: hidden; backface-visibility: hidden;
 }
 .hdr.scrolled { background: rgba(51,49,30,0.96); box-shadow: 0 1px 0 rgba(184,155,110,0.25); padding: 12px 40px; }
 .hdr .brand { display: flex; align-items: center; gap: 12px; color: var(--gold); }
@@ -96,7 +96,7 @@
 .mobile-nav a { padding: 14px 40px; font-size: 13px; letter-spacing: 0.2em; color: rgba(245,241,232,0.85); border-bottom: 1px solid rgba(184,155,110,0.1); }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; }
+.hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; }
 .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease; }
 .slide.active { opacity: 1; }
 .slide-img { position: absolute; inset: 0; background-size: cover; background-position: center; }
