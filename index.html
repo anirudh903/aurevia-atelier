@@ -44,8 +44,8 @@
 .aurevia a { color: inherit; text-decoration: none; }
 .aurevia ::selection { background: var(--gold); color: var(--olive-deep); }
 
-.wrap { max-width: 1300px; margin: 0 auto; padding: 0 40px; }
-@media (max-width: 640px) { .wrap { padding: 0 22px; } }
+.wrap { max-width: 1300px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 44px); }
+/* .wrap padding is fluid via clamp */
 
 .serif { font-family: var(--serif); }
 
@@ -107,7 +107,7 @@
 .hero-content .w1 { font-size: clamp(56px, 11vw, 132px); }
 .hero-content .w2 { font-size: clamp(15px, 2vw, 20px); }
 .hero-content .tag { font-size: clamp(10px, 1.4vw, 13px); }
-.hero-logo { width: clamp(260px, 62vw, 470px); height: auto; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.55)); }
+.hero-logo { width: clamp(220px, 60vw, 470px); height: auto; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.55)); }
 .cta {
   display: inline-flex; align-items: center; gap: 12px; margin-top: 40px;
   background: var(--gold); color: var(--olive-deep); border: none; cursor: pointer;
@@ -138,7 +138,7 @@
 .diamond-rule svg { height: 8px; width: 8px; }
 
 /* ---------- About ---------- */
-.about { background: var(--cream-light); padding: 120px 0; }
+.about { background: var(--cream-light); padding: clamp(64px, 10vw, 120px) 0; }
 .about-grid { display: grid; grid-template-columns: 3fr 6fr 3fr; gap: 40px; align-items: center; }
 .about-img { position: relative; height: 440px; max-width: 320px; width: 100%; margin: 0 auto; overflow: hidden; background: var(--cream-dark); border-radius: 50% 50% 6px 6px / 32% 32% 4px 4px; }
 .about-img div { position: absolute; inset: 0; background-size: cover; background-position: 50% 26%; }
@@ -163,7 +163,7 @@
 .stat .cap { margin-top: 4px; font-size: 10px; letter-spacing: 0.2em; color: var(--muted); }
 
 /* ---------- Services ---------- */
-.services { background: var(--cream); padding: 100px 0; }
+.services { background: var(--cream); padding: clamp(60px, 9vw, 100px) 0; }
 .svc-grid { margin-top: 64px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
 .svc {
   border: 1px solid rgba(184,155,110,0.25); background: rgba(250,247,240,0.6);
@@ -177,7 +177,7 @@
 .svc p { margin-top: 12px; font-size: 12.5px; line-height: 1.6; color: var(--muted); }
 
 /* ---------- Featured projects ---------- */
-.projects { background: var(--cream-light); padding: 100px 0; }
+.projects { background: var(--cream-light); padding: clamp(60px, 9vw, 100px) 0; }
 .rail-wrap { position: relative; margin-top: 64px; }
 .rail { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-bottom: 8px; scrollbar-width: none; }
 .rail::-webkit-scrollbar { display: none; }
@@ -201,7 +201,7 @@
 .view-all { margin-top: 56px; display: flex; justify-content: center; }
 
 /* ---------- Process ---------- */
-.process { position: relative; overflow: hidden; background: var(--olive-deep); padding: 100px 0; }
+.process { position: relative; overflow: hidden; background: var(--olive-deep); padding: clamp(60px, 9vw, 100px) 0; }
 .process::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(184,155,110,0.08), transparent 60%); pointer-events: none; }
 .steps { position: relative; margin-top: 64px; display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .step { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -258,7 +258,7 @@
   .hdr .brand .emblem { height: 34px; }
   .hdr-right { gap: 10px; }
   .btn-ghost { padding: 9px 15px; font-size: 9.5px; letter-spacing: 0.12em; }
-  .about, .services, .projects, .process { padding: 72px 0; }
+  /* section padding is fluid via clamp */
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .card { flex-basis: 82%; }
   .foot-grid { grid-template-columns: 1fr; gap: 36px; }
